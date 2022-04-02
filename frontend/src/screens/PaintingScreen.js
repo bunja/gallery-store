@@ -1,14 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { Row, Col, Image, ListGroup, Button, Card} from 'react-bootstrap'
+import { Row, Col, Image, ListGroup, Button, Card } from 'react-bootstrap'
+import axios from 'axios'
 
-import paintings from '../paintings'
+// import paintings from '../paintings'
 
 
 function PaintingScreen() {
     const { id } = useParams()
-    console.log( id )
-    const painting = paintings.find((p) => p._id == id ) 
+    const [painting, setPainting] = useState([])
+    console.log("ID", id)
+
+    useEffect(() => {
+        console.log("use effect")
+        async function fetchPainting() {
+
+            const { data } = await axios.get(`/api/paintings/${id}`)
+            console.log("fetch painting", data)
+            setPainting(data)
+        }
+        fetchPainting()
+    }, [])
+
     return (
         <div>
             <Link to='/'>Go Back</Link>
@@ -20,17 +33,17 @@ function PaintingScreen() {
                 <Col md={3}>
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
-                            <h3>{ painting.name }</h3>
+                            <h3>{painting.name}</h3>
                         </ListGroup.Item>
 
-                        
+
 
                         <ListGroup.Item>
-                            Price:{ painting.price }
+                            Price:{painting.price}
                         </ListGroup.Item>
 
                         <ListGroup.Item>
-                            Description:{ painting.description }
+                            Description:{painting.description}
                         </ListGroup.Item>
                     </ListGroup>
                 </Col>
