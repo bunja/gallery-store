@@ -17,10 +17,11 @@ function PaintingScreen() {
 
     useEffect(() => {
         dispatch(listPaintingDetails(id))
-    }, [])
+    }, [dispatch, id])
 
     const addToCartHandler = () => {
-        navigate(`/cart/${id}`)
+        console.log('addToCartHandler triggered', id)
+        navigate(`/cart`)
     }
 
     return (

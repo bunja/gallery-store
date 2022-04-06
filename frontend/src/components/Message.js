@@ -5,7 +5,7 @@ function Message({ variant, children }) {
     console.log("from message", children, variant)
     
     return (
-        <Alert variant='variant'>
+        <Alert variant={variant}>
             {children}
         </Alert>
     )
