@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { listPaintingDetails } from '../actions/paintingActions'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
-
+import { addToCart, removeFromCart } from '../actions/cartActions'
 
 function PaintingScreen() {
     const { id } = useParams()
@@ -14,6 +14,7 @@ function PaintingScreen() {
     const paintingDetails = useSelector(state => state.paintingDetails)
     // console.log('painting details', paintingDetails)
     const { error, loading, painting } = paintingDetails
+    
 
     useEffect(() => {
         dispatch(listPaintingDetails(id))
@@ -21,6 +22,7 @@ function PaintingScreen() {
 
     const addToCartHandler = () => {
         console.log('addToCartHandler triggered', id)
+        dispatch(addToCart(id))
         navigate(`/cart`)
     }
 

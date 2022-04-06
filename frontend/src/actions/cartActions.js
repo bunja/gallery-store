@@ -2,8 +2,9 @@ import axios from 'axios'
 import { CART_ADD_ITEM, CART_REMOVE_ITEM } from '../constants/cartConstants'
 
 export const addToCart = (id) => async(dispatch, getState) => {
+    console.log('gugug addToCart', id)
     const { data } = await axios.get(`/api/paintings/${id}`)
-    console.log('gugug')
+    console.log('gugug', data)
     dispatch({
         type: CART_ADD_ITEM,
         payload: {

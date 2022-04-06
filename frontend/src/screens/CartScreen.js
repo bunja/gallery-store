@@ -16,11 +16,11 @@ function CartScreen() {
     console.log('cartiyems', cartItems)
     const navigate = useNavigate()
 
-    useEffect(() => {
-        if (id) {
-            dispatch(addToCart(id))
-        }
-    }, [dispatch, id])
+    // useEffect(() => {
+    //     if (id) {
+    //         dispatch(addToCart(id))
+    //     }
+    // }, [dispatch, id])
 
     const removeFromCartHandler = (id) => {
         console.log('remove', id)
