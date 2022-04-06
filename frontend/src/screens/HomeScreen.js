@@ -27,7 +27,7 @@ function HomeScreen() {
                 {paintings.map(painting => (
                     <Col key={painting._id} sm={12} md={6} lg={4} xl={3}>
                         <h3>
-                            <Painting painting={painting} />
+                            <Painting painting={painting}/>
                         </h3>
                     </Col>
                 ))}

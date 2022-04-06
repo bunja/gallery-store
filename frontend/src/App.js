@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Footer from './components/Footer'
 import Header from './components/Header';
 import HomeScreen from './screens/HomeScreen';
-import PaintingScreen from './screens/PaintingScreen'
+import PaintingScreen from './screens/PaintingScreen';
+import CartScreen from './screens/CartScreen'
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
           <Routes>
             <Route path="/" element={<HomeScreen/>} exact />
             <Route path="/painting/:id" element={<PaintingScreen/>} />
+            <Route path="/cart" element={<CartScreen/>} />
+            <Route path="/cart/:id" element={<CartScreen/>} />
           </Routes>
         </Container>
         </main>

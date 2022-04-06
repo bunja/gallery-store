@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import { Row, Col, Image, ListGroup, Button, Card } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { listPaintingDetails } from '../actions/paintingActions'
@@ -9,14 +9,19 @@ import Message from '../components/Message'
 
 function PaintingScreen() {
     const { id } = useParams()
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const paintingDetails = useSelector(state => state.paintingDetails)
-    console.log('painting details', paintingDetails)
+    // console.log('painting details', paintingDetails)
     const { error, loading, painting } = paintingDetails
 
     useEffect(() => {
         dispatch(listPaintingDetails(id))
     }, [])
+
+    const addToCartHandler = () => {
+        navigate(`/cart/${id}`)
+    }
 
     return (
         <div>
@@ -60,11 +65,16 @@ function PaintingScreen() {
                                         <ListGroup.Item>
                                             <Row>
                                                 <Col>Status:</Col>
-                                                <Col>{painting.available ? 'Available' : 'Sold'}</Col>
+                                                <Col>{painting.isAvailable ? 'Available' : 'Sold'}</Col>
                                             </Row>
                                         </ListGroup.Item>
                                         <ListGroup.Item>
-                                            <Button className='btn-block ' type='button' disabled={!painting.available}>
+                                            <Button 
+                                                onClick={addToCartHandler}
+                                                className='btn-block' 
+                                                type='button' 
+                                                disabled={!painting.isAvailable}
+                                            >
                                                 Add to Cart
                                             </Button>
                                         </ListGroup.Item>

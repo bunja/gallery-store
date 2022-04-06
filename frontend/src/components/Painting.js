@@ -13,13 +13,19 @@ function Painting({ painting }) {
             <Card.Body>
                 <Link to={`/painting/${painting._id}`}>
                     <Card.Title as="div">
-                        {painting.name}
+                        {painting.name} 
                     </Card.Title>
                 </Link>
 
                 <Card.Text as="div">
+                    <div className="my-4">
+                    {painting.height} x {painting.width} cm
+                    </div>
+                </Card.Text>
+
+                <Card.Text as="div">
                     <div className="my-3">
-                        here was rating
+                        {painting.materials}
                     </div>
                 </Card.Text>
 

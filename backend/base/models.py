@@ -11,11 +11,11 @@ class Painting(models.Model):
     description = models.TextField(null=True, blank=True)
     materials = models.CharField(max_length=200, null=True, blank=True)
     
-    height = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
-    width = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
+    height = models.DecimalField(max_digits=7, decimal_places=0, null=True, blank=True)
+    width = models.DecimalField(max_digits=7, decimal_places=0, null=True, blank=True)
     year = models.IntegerField(null=True, blank=True, default=0)
     price = models.DecimalField(max_digits=7,decimal_places=2, null=True, blank=True)
-    isAvailable = models.BooleanField(default=False)
+    isAvailable = models.BooleanField(default=True)
     createdAt = models.DateTimeField(auto_now_add=True)
     _id = models.AutoField(primary_key=True, editable=False)
 
