@@ -4,9 +4,9 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 from django.contrib.auth.models import User
-from .models import Painting
+from base.models import Painting
 # from .paintings import paintings 
-from .serializers import PaintingSerializer, UserSerializer, UserSerializerWithToken
+from base.serializers import PaintingSerializer, UserSerializer, UserSerializerWithToken
 
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
@@ -61,14 +61,3 @@ def getUsers(request):
 
 
 
-@api_view(['GET'])
-def getPaintings(request):
-    paintings = Painting.objects.all()
-    serializer = PaintingSerializer(paintings, many=True)
-    return Response(serializer.data)
-
-@api_view(['GET'])
-def getPainting(request, pk):
-    painting = Painting.objects.get(_id=pk)
-    serializer = PaintingSerializer(painting, many=False)
-    return Response(serializer.data)
