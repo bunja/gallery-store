@@ -5,6 +5,22 @@ from .models import Painting
 # from .paintings import paintings 
 from .serializers import PaintingSerializer
 
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView
+
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+   
+    def validate(self, attrs):
+        data = super().validate(attrs)
+        
+        data['username'] = self.user.username
+        data['email'] = self.user.email
+
+        return data
+
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
+
 # Create your views here.
 @api_view(['GET'])
 def getRoutes(request):
