@@ -53,5 +53,6 @@ def addOrderItems(request):
             # update stock
             painting.isAvailable = False
             painting.save()
-    serializer = OrderSerializer(order, many=True)
-    return Response(serializer.data)
+
+        serializer = OrderSerializer(order, many=False)
+        return Response(serializer.data)
