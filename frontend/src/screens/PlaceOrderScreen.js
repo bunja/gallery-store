@@ -17,10 +17,11 @@ function PlaceOrderScreen() {
     const { order, error, success } = orderCreate
     const cart = useSelector(state => state.cart)
     const { shippingAddress } = cart
-    console.log('cart', cart)
+    console.log('PLACE ORDER SCREEN order====>', order)
+    console.log('PLACE ORDER SCREEN orderCreate====>', orderCreate)
 
     cart.itemsPrice = cart.cartItems.reduce((acc, item) => acc + Number(item.price), 0).toFixed(2)
-    console.log("=====>",cart.itemsPrice)
+    
     cart.shippingPrice = (cart.itemsPrice > 100 ? 0 : 10).toFixed(2)
     cart.taxPrice = Number(0.082 * cart.itemsPrice).toFixed(2)
     cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.taxPrice)).toFixed(2)
@@ -31,8 +32,9 @@ function PlaceOrderScreen() {
     }
 
     useEffect(() => {
+        console.log("my order id WHERE THE FUCK IT???", order._id)
         if (success) {
-            navigate('/order/${order._id}')
+            navigate(`/order/${order._id}`)
             dispatch({ type: ORDER_CREATE_RESET})
         }
     

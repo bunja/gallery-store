@@ -8,9 +8,9 @@ import {
 } from '../constants/cartConstants'
 
 export const addToCart = (id) => async(dispatch, getState) => {
-    console.log('gugug addToCart', id)
+    // console.log('gugug addToCart', id)
     const { data } = await axios.get(`/api/paintings/${id}`)
-    console.log('gugug', data)
+    // console.log('gugug', data)
     dispatch({
         type: CART_ADD_ITEM,
         payload: {
@@ -26,7 +26,7 @@ export const addToCart = (id) => async(dispatch, getState) => {
 }
 
 export const removeFromCart = (id) => (dispatch, getState) => {
-    console.log(" REMOVE MOVE MOVE BEATCH!!!")
+    // console.log(" REMOVE MOVE MOVE BEATCH!!!")
     dispatch({
         type: CART_REMOVE_ITEM,
         payload: id,
@@ -37,7 +37,7 @@ export const removeFromCart = (id) => (dispatch, getState) => {
 }
 
 export const saveShippingAddress = (data) => (dispatch) => {
-    console.log(" save shiping data!!!")
+    // console.log(" save shiping data!!!")
     dispatch({
         type: CART_SAVE_SHIPPING_ADDRESS,
         payload: data,
@@ -48,7 +48,7 @@ export const saveShippingAddress = (data) => (dispatch) => {
 }
 
 export const savePaymentMethod = (data) => (dispatch) => {
-    console.log(" save payment method!!!")
+    // console.log(" save payment method!!!")
     dispatch({
         type: CART_SAVE_PAYMENT_METHOD,
         payload: data,
