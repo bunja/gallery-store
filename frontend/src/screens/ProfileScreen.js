@@ -38,12 +38,15 @@ function ProfileScreen() {
     console.log("OrderListMy---->", orderListMy)
     console.log("Orders---->", orders)
 
+    console.log("ProfileScreen 41");
 
     useEffect(() => {
         if (!userInfo) {
             navigate('/login')
         } else {
+            console.log("ProfileScreen 46", user, user && user.name, success, userInfo._id !== user._id)
             if (!user || !user.name || success || userInfo._id !== user._id) {
+                console.log("IM INSIDE !!!!!!!!!!!!!!!!!!!! 48")
                 dispatch({ type: USER_UPDATE_PROFILE_RESET })
                 dispatch(getUserDetails('profile'))
                 dispatch(listMyOrders())
