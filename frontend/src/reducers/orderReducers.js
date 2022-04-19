@@ -83,3 +83,69 @@ export const orderDetailsReducer = (
 
     }
 }
+
+export const orderPayReducer = (state = {}, action) => {
+        
+    switch (action.type) {
+        case ORDER_PAY_REQUEST:
+            return {
+                loading: true
+            }
+
+        case ORDER_PAY_SUCCESS:
+            // console.log('reducer ORDER_PAY_SUCCESS+++>')
+            return {
+                loading: false,
+                success: true
+            }
+
+        case ORDER_PAY_FAIL:
+            return {
+                loading: false,
+                error: action.payload
+            }
+
+        case ORDER_PAY_RESET:
+            return {}
+
+        default:
+            return state
+
+    }
+}
+
+export const orderListMyReducer = (state = {}, action) => {
+    console.log("Hi, i am oerderListMyReducer")
+    switch (action.type) {
+        
+        case ORDER_LIST_MY_REQUEST:
+            return {
+                loading: true
+            }
+        console.log("ORDER_LIST_MY_REQUEST:")
+        case ORDER_LIST_MY_SUCCESS:
+       
+            return {
+                loading: false,
+                orders: action.payload
+            }
+            console.log("ORDER_LIST_MY_SUCCESS") 
+
+        case ORDER_LIST_MY_FAIL:
+        console.log("ORDER_LIST_MY_FAIL:") 
+            return {
+                loading: false,
+                error: action.payload
+            }
+
+        case ORDER_LIST_MY_RESET:
+        console.log("ORDER_LIST_MY_RESET:")     
+            return {
+                orders: []
+            }
+
+        default:
+            return state
+
+    }
+}
