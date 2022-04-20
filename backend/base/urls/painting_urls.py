@@ -8,7 +8,10 @@ from rest_framework_simplejwt.views import (
 urlpatterns = [
         
     path('', views.getPaintings, name='paintings'),
+    
+    path('create/', views.createPainting, name='painting-create'),
     path('<str:pk>', views.getPainting, name='painting'),
     
+    path('update/<str:pk>/', views.updatePainting, name='painting-update'),
     path('delete/<str:pk>/', views.deletePainting, name='painting-delete'),
 ]

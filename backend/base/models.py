@@ -1,4 +1,5 @@
 
+from email.policy import default
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -7,7 +8,7 @@ class Painting(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=200, null=True, blank=True)
-    image = models.ImageField(null=True, blank=True)
+    image = models.ImageField(null=True, blank=True, default='/placeholder.png')
     description = models.TextField(null=True, blank=True)
     materials = models.CharField(max_length=200, null=True, blank=True)
     
