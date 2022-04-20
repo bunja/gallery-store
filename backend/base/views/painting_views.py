@@ -49,6 +49,7 @@ def updatePainting(request, pk):
     painting.price = data['price']
     painting.height = data['height']
     painting.width = data['width']
+    painting.year = data['year']
     painting.isAvailable = data['isAvailable']
     painting.materials = data['materials']
     painting.description = data['description']

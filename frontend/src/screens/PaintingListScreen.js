@@ -37,7 +37,7 @@ function PaintingListScreen() {
         }
 
         if(successCreate){
-            navigate(`/admin/painting/${createdPainting._id}/edit`)
+            navigate(`/admin/paintings/${createdPainting._id}/edit`)
         } else {
             dispatch(listPaintings())
         }
@@ -102,7 +102,7 @@ function PaintingListScreen() {
                                         <td>{painting.materials}</td>
                                         <td>{painting.year}</td>
                                         <td>
-                                            <LinkContainer to={`/admin/painting/${painting._id}/edit`}>
+                                            <LinkContainer to={`/admin/paintings/${painting._id}/edit`}>
                                                 <Button variant='light' className="btn-sm">
                                                 <i className='fas fa-edit'></i>
                                                 </Button>
