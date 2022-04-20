@@ -8,6 +8,10 @@ import {
     PAINTING_DETAILS_SUCCESS,
     PAINTING_DETAILS_FAIL,
 
+    PAINTING_DELETE_REQUEST,
+    PAINTING_DELETE_SUCCESS,
+    PAINTING_DELETE_FAIL,
+
 
 } from '../constants/paintingConstants'
 
@@ -49,6 +53,47 @@ export const listPaintingDetails = (id) => async(dispatch) => {
             payload: error.response && error.response.data.detail
             ? error.response.data.detail
             : error.message
+        })
+    }
+}
+
+export const deletePainting = (id) => async (dispatch, getState) => {
+    try {
+        
+        dispatch({
+            type: PAINTING_DELETE_REQUEST
+        })
+
+        const { 
+            userLogin: {userInfo}, 
+        } = getState()
+
+        
+        const config = {
+            headers: {
+                'Content-type': 'application/json',
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+
+        const { data } = await axios.delete(
+            `/api/painting/delete/${id}`,
+            config
+        )
+
+        
+        dispatch({
+            type: PAINTING_DELETE_SUCCESS,
+            
+        })
+              
+        
+    } catch (error) {
+        dispatch({
+            type: PAINTING_DELETE_FAIL,
+            payload: error.response && error.response.data.detail
+                ? error.response.data.detail
+                : error.message,
         })
     }
 }

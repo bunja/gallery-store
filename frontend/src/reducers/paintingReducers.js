@@ -7,6 +7,10 @@ import {
     PAINTING_DETAILS_SUCCESS,
     PAINTING_DETAILS_FAIL,
 
+    PAINTING_DELETE_REQUEST,
+    PAINTING_DELETE_SUCCESS,
+    PAINTING_DELETE_FAIL,
+
 
 } from '../constants/paintingConstants'
 
@@ -60,6 +64,31 @@ export const paintingDetailsReducer = (state = { painting: [] }, action) => {
         case PAINTING_DETAILS_FAIL:
             // console.log("PAINTING_DETAILS_Fail")
             return {
+                loading: false,
+                error: action.payload
+            }
+        default:
+            return state
+    }
+}          
+
+export const paintingDeleteReducer = (state = { }, action) => {
+    
+    switch (action.type) {
+        
+        case PAINTING_DELETE_REQUEST:
+            return {
+                loading: true,
+            }
+
+        case PAINTING_DELETE_SUCCESS:
+            return {
+                loading: false,
+                success: true
+            }
+
+        case PAINTING_DELETE_FAIL:
+           return {
                 loading: false,
                 error: action.payload
             }

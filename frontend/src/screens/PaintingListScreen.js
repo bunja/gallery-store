@@ -20,7 +20,7 @@ function PaintingListScreen() {
     const { loading: loadingDelete, error: errorDelete, success: successDelete} = paintingDelete
 
     const paintingCreate = useSelector(state => state.paintingCreate)
-    const { loading: loadingCreate, error: errorCreate, success: successCreate, painting: createdpainting} = productCreate
+    const { loading: loadingCreate, error: errorCreate, success: successCreate, painting: createdPainting} = paintingCreate
 
 
     const userLogin = useSelector(state => state.userLogin)

@@ -9,4 +9,6 @@ urlpatterns = [
         
     path('', views.getPaintings, name='paintings'),
     path('<str:pk>', views.getPainting, name='painting'),
+    
+    path('delete/<str:pk>/', views.deletePainting, name='painting-delete'),
 ]

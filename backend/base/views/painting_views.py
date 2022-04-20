@@ -19,3 +19,11 @@ def getPainting(request, pk):
     painting = Painting.objects.get(_id=pk)
     serializer = PaintingSerializer(painting, many=False)
     return Response(serializer.data)
+
+@api_view(['DELETE'])
+@permission_classes([IsAdminUser])
+def deletePainting(request, pk):
+    painting = Painting.objects.get(_id=pk)
+    painting.delete()
+    
+    return Response("This trash pic was deleted")
