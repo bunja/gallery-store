@@ -17,6 +17,12 @@ import {
     PAINTING_CREATE_FAIL,
     PAINTING_CREATE_RESET,
 
+    PAINTING_UPDATE_REQUEST,
+    PAINTING_UPDATE_SUCCESS,
+    PAINTING_UPDATE_FAIL,
+    PAINTING_UPDATE_RESET,
+
+
 
 } from '../constants/paintingConstants'
 
@@ -144,3 +150,51 @@ export const createPainting = () => async (dispatch, getState) => {
         })
     }
 }
+
+export const updatePainting = (painting) => async (dispatch, getState) => {
+    try {
+        
+        dispatch({
+            type: PAINTING_UPDATE_REQUEST
+        })
+
+        const { 
+            userLogin: {userInfo}, 
+        } = getState()
+
+        
+        const config = {
+            headers: {
+                'Content-type': 'application/json',
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+
+        const { data } = await axios.put(
+            `/api/paintings/update/${painting._id}/`,
+            painting,
+            config
+        )
+
+        
+        dispatch({
+            type: PAINTING_UPDATE_SUCCESS,
+            payload: data
+        })
+
+        dispatch({
+            type: PAINTING_DETAILS_SUCCESS,
+            payload: data
+        })
+              
+        
+    } catch (error) {
+        dispatch({
+            type: PAINTING_UPDATE_FAIL,
+            payload: error.response && error.response.data.detail
+                ? error.response.data.detail
+                : error.message,
+        })
+    }
+}
+

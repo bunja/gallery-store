@@ -6,6 +6,7 @@ import {
     paintingDetailsReducer,
     paintingDeleteReducer,
     paintingCreateReducer,
+    paintingUpdateReducer,
 } from './reducers/paintingReducers'
 import { cartReducer } from './reducers/cartReducers'
 import { 
@@ -29,6 +30,7 @@ const reducer = combineReducers({
     paintingDetails: paintingDetailsReducer,
     paintingDelete: paintingDeleteReducer,
     paintingCreate: paintingCreateReducer,
+    paintingUpdate: paintingUpdateReducer,
 
     cart: cartReducer,
 
