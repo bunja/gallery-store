@@ -85,7 +85,7 @@ function PaintingListScreen() {
                                 <th>NAME</th>
                                 <th>PRICE</th>
                                 <th>WIDTH x HEIGHT</th>
-                                <th>MATERIAS</th>
+                                <th>MATERIALS</th>
                                 <th>YEAR</th>
                                 <th></th>
                                 </tr>
