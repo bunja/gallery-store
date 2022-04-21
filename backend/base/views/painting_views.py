@@ -30,6 +30,7 @@ def createPainting(request):
         price = 0,
         height = 0,
         width = 0,
+        year = 2000,
         isAvailable = True,
         materials='Sample Materials',
         description=''
@@ -67,3 +68,14 @@ def deletePainting(request, pk):
     painting.delete()
     
     return Response("This trash pic was deleted")
+
+@api_view(['POST'])
+def uploadImage(request):
+    data = request.data
+    
+    painting_id = data['painting_id']
+    painting = Painting.objects.get(_id=painting_id)
+    
+    painting.image = request.FILES.get('image')
+    painting.save()
+    return Response('Image was uploaded')

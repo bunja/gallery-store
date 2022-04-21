@@ -10,6 +10,7 @@ urlpatterns = [
     path('', views.getPaintings, name='paintings'),
     
     path('create/', views.createPainting, name='painting-create'),
+    path('upload/', views.uploadImage, name='image-upload'),
     path('<str:pk>', views.getPainting, name='painting'),
     
     path('update/<str:pk>/', views.updatePainting, name='painting-update'),

@@ -37,7 +37,7 @@ function PaintingListScreen() {
         }
 
         if(successCreate){
-            navigate(`/admin/paintings/${createdPainting._id}/edit`)
+            navigate(`/admin/painting/${createdPainting._id}/edit`)
         } else {
             dispatch(listPaintings())
         }

@@ -21,11 +21,11 @@ function PaintingEditScreen() {
     const [image, setImage] = useState('')
     const [height, setHeight] = useState(0)
     const [width, setWidth] = useState(0)
-    const [year, setYear] = useState('')
-    const [isAvailable, setIsAvailable] = useState('true')
+    const [year, setYear] = useState(2000)
+    const [isAvailable, setIsAvailable] = useState(true)
     const [materials, setMaterials] = useState('')
     const [description, setDescription] = useState('')
-    const [uploading, setUploading] = useState('false')
+    const [uploading, setUploading] = useState(false)
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -41,7 +41,7 @@ function PaintingEditScreen() {
     useEffect(() => {
         if (successUpdate) {
             dispatch({ type: PAINTING_UPDATE_RESET })
-            navigate(`/admin/paintingtlist`)
+            navigate(`/admin/paintinglist`)
         } else {
             if (!painting.name || painting._id !== Number(id)) {
                 dispatch(listPaintingDetails(id))
@@ -173,7 +173,7 @@ function PaintingEditScreen() {
                                     type='number'
                                     placeholder='Enter Height'
                                     value={height}
-                                    onChange={(e) => setPrice(e.target.value)}
+                                    onChange={(e) => setHeight(e.target.value)}
                                 >
                                 </Form.Control>
                             </Form.Group>
@@ -185,7 +185,7 @@ function PaintingEditScreen() {
                                     type='number'
                                     placeholder='Enter Width'
                                     value={width}
-                                    onChange={(e) => setPrice(e.target.value)}
+                                    onChange={(e) => setWidth(e.target.value)}
                                 >
                                 </Form.Control>
                             </Form.Group>
@@ -194,10 +194,10 @@ function PaintingEditScreen() {
                                 <Form.Label>Year</Form.Label>
                                 <Form.Control
 
-                                    type='text'
+                                    type='number'
                                     placeholder='Enter Year'
                                     value={year}
-                                    onChange={(e) => setPrice(e.target.value)}
+                                    onChange={(e) => setYear(e.target.value)}
                                 >
                                 </Form.Control>
                             </Form.Group>
