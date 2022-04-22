@@ -40,7 +40,9 @@ export const paintingListReducer = (state = { paintings: [] }, action) => {
             // console.log("gugug sucec", action.payload)
             return {
                 loading: false,
-                paintings: action.payload
+                paintings: action.payload.paintings,
+                page: action.payload.page,
+                pages: action.payload.pages,
             }
 
         case PAINTING_LIST_FAIL:

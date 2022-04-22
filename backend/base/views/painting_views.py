@@ -3,10 +3,13 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from base.models import Painting
 from base.serializers import PaintingSerializer
 from rest_framework import status
+
+
 
 @api_view(['GET'])
 def getPaintings(request):
@@ -15,8 +18,27 @@ def getPaintings(request):
     if query == None:
         query = ''
     paintings = Painting.objects.filter(name__icontains=query)
+    page = request.query_params.get('page')
+    paginator = Paginator(paintings, 2)
+    
+    try:
+        paintings = paginator.page(page)
+    except PageNotAnInteger:
+        paintings = paginator.page(1)
+    except EmptyPage:
+        paintings = paginator.page(paginator.num_pages)
+        
+    if page == None:
+        page = 1
+        
+    page = int(page)
+    
     serializer = PaintingSerializer(paintings, many=True)
-    return Response(serializer.data)
+    return Response({
+        'paintings': serializer.data,
+        'page': page,
+        'pages': paginator.num_pages,
+        })
 
 @api_view(['GET'])
 def getPainting(request, pk):
