@@ -19,7 +19,7 @@ def getPaintings(request):
         query = ''
     paintings = Painting.objects.filter(name__icontains=query)
     page = request.query_params.get('page')
-    paginator = Paginator(paintings, 2)
+    paginator = Paginator(paintings, 5)
     
     try:
         paintings = paginator.page(page)

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import { Table, Button, Row, Col } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
+import Paginate from '../components/Paginate'
 import { listPaintings, deletePainting, createPainting } from '../actions/paintingActions'
 import { PAINTING_CREATE_RESET } from '../constants/paintingConstants'
 
@@ -12,39 +13,40 @@ import { PAINTING_CREATE_RESET } from '../constants/paintingConstants'
 function PaintingListScreen() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const location = useLocation()
 
     const paintingList = useSelector(state => state.paintingList)
-    const { loading, error, paintings} = paintingList
+    const { loading, error, paintings, pages, page } = paintingList
 
     const paintingDelete = useSelector(state => state.paintingDelete)
-    const { loading: loadingDelete, error: errorDelete, success: successDelete} = paintingDelete
+    const { loading: loadingDelete, error: errorDelete, success: successDelete } = paintingDelete
 
     const paintingCreate = useSelector(state => state.paintingCreate)
-    const { loading: loadingCreate, error: errorCreate, success: successCreate, painting: createdPainting} = paintingCreate
+    const { loading: loadingCreate, error: errorCreate, success: successCreate, painting: createdPainting } = paintingCreate
 
 
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
 
-   
+
     // console.log('LIST PAINTINGS ', paintingList)
-
+    let keyword = location.search
     useEffect(() => {
-        dispatch({ type: PAINTING_CREATE_RESET})
+        dispatch({ type: PAINTING_CREATE_RESET })
 
-        if(!userInfo.isAdmin){
+        if (!userInfo.isAdmin) {
             navigate('/login')
         }
 
-        if(successCreate){
+        if (successCreate) {
             navigate(`/admin/painting/${createdPainting._id}/edit`)
         } else {
-            dispatch(listPaintings())
+            dispatch(listPaintings(keyword))
         }
-    }, [dispatch, navigate, userInfo, successDelete, successCreate, createdPainting])
+    }, [dispatch, navigate, userInfo, successDelete, successCreate, createdPainting, keyword])
 
     const deleteHandler = (id) => {
-        if (window.confirm('Are you sure yo want to delete this painting?')){
+        if (window.confirm('Are you sure yo want to delete this painting?')) {
             dispatch(deletePainting(id))
         }
     }
@@ -63,33 +65,33 @@ function PaintingListScreen() {
                 </Col>
                 <Col className='text-right'>
                     <Button className='my-3'
-                            onClick={createPaintingHandler}>
+                        onClick={createPaintingHandler}>
                         <i className='fas fa-plus'></i>Create Painting
                     </Button>
                 </Col>
             </Row>
-            {loadingDelete && <Loader/>}
+            {loadingDelete && <Loader />}
             {errorDelete && <Message variant='danger'>{errorDelete}</Message>}
 
-            {loadingCreate && <Loader/>}
+            {loadingCreate && <Loader />}
             {errorCreate && <Message variant='danger'>{errorCreate}</Message>}
-            { loading 
-                ? (<Loader/>)
+            {loading
+                ? (<Loader />)
                 : error
-                    ? ( <Message variant='danger'>{error}</Message>)
-                    : (
+                    ? (<Message variant='danger'>{error}</Message>)
+                    : (<div>
                         <Table striped bordered hover responsive className='table-sm'>
                             <thead>
                                 <tr>
-                                <th>ID</th>
-                                <th>NAME</th>
-                                <th>PRICE</th>
-                                <th>WIDTH x HEIGHT</th>
-                                <th>MATERIALS</th>
-                                <th>YEAR</th>
-                                <th></th>
+                                    <th>ID</th>
+                                    <th>NAME</th>
+                                    <th>PRICE</th>
+                                    <th>WIDTH x HEIGHT</th>
+                                    <th>MATERIALS</th>
+                                    <th>YEAR</th>
+                                    <th></th>
                                 </tr>
-                                
+
                             </thead>
 
                             <tbody>
@@ -104,12 +106,12 @@ function PaintingListScreen() {
                                         <td>
                                             <LinkContainer to={`/admin/painting/${painting._id}/edit`}>
                                                 <Button variant='light' className="btn-sm">
-                                                <i className='fas fa-edit'></i>
+                                                    <i className='fas fa-edit'></i>
                                                 </Button>
                                             </LinkContainer>
-                                            <Button variant='danger' 
-                                                    className="btn-sm"
-                                                    onClick={() => deleteHandler(painting._id)}>
+                                            <Button variant='danger'
+                                                className="btn-sm"
+                                                onClick={() => deleteHandler(painting._id)}>
                                                 <i className='fas fa-trash'></i>
                                             </Button>
                                         </td>
@@ -118,6 +120,12 @@ function PaintingListScreen() {
                             </tbody>
 
                         </Table>
+                        <Paginate
+                            page={page}
+                            pages={pages}
+                            isAdmin={true}  
+                        />
+                        </div>
                     )
 
             }
