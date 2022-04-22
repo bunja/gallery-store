@@ -10,7 +10,11 @@ from rest_framework import status
 
 @api_view(['GET'])
 def getPaintings(request):
-    paintings = Painting.objects.all()
+    query = request.query_params.get('keyword')
+    print('QUERY====>', query)
+    if query == None:
+        query = ''
+    paintings = Painting.objects.filter(name__icontains=query)
     serializer = PaintingSerializer(paintings, many=True)
     return Response(serializer.data)
 

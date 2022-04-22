@@ -26,11 +26,11 @@ import {
 
 } from '../constants/paintingConstants'
 
-export const listPaintings = () => async(dispatch) => {
+export const listPaintings = (keyword = '') => async(dispatch) => {
     try {
         dispatch({ type: PAINTING_LIST_REQUEST })
 
-        const { data } = await axios.get('/api/paintings')
+        const { data } = await axios.get(`/api/paintings${keyword}`)
 
         dispatch({
             type: PAINTING_LIST_SUCCESS,

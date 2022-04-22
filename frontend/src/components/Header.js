@@ -4,6 +4,8 @@ import { LinkContainer } from "react-router-bootstrap";
 import { useSelector, useDispatch } from 'react-redux'
 import { logout } from '../actions/userActions'
 
+import SearchBox from "./SearchBox";
+
 function Header() {
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
@@ -17,8 +19,8 @@ function Header() {
 
     return (
         <header>
-            <Navbar bg="light" variant="light" expand="lg" collapseOnSelect>
-                <Container>
+            <Navbar bg="light" variant="light" expand="lg"  collapseOnSelect>
+                <Container className='px-5'>
                     <LinkContainer to="/">
                         <Navbar.Brand>La Kookoo </Navbar.Brand>
 
@@ -26,6 +28,7 @@ function Header() {
 
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
+                        <SearchBox className='px-3'/>
                         <Nav className="mr-auto">
                             <Navbar.Text>Galery Store</Navbar.Text>
                             <LinkContainer to="/cart">
