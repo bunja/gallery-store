@@ -16,6 +16,7 @@ function HomeScreen() {
     const dispatch = useDispatch()
     const paintingList = useSelector(state => state.paintingList)
     const { error, loading, paintings } = paintingList
+    console.log('LOCATION', location)
    
     let keyword = location.search
     useEffect(() => {

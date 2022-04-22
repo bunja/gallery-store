@@ -11,18 +11,33 @@ function SearchBox() {
 
     const submitHandler = (e) => {
         e.preventDefault()
-        if(keyword){
+        if (keyword) {
             navigate(`/?keyword=${keyword}`)
         } else {
             navigate(location.pathname)
         }
     }
+
+    const changeHandler = (e) => {
+        e.preventDefault()
+        setKeyword(e.target.value)
+        
+        if (keyword) {
+            if (keyword.length >= 3) {
+                navigate(`/?keyword=${keyword}`)
+            }
+            
+        } else {
+            navigate(location.pathname)
+        }
+    }
+
   return (
     <Form onSubmit={submitHandler} className='search-box'>
         <Form.Control
             type='text'
             name='q'
-            onChange={(e) => setKeyword(e.target.value)}
+            onChange={e => changeHandler(e)}
             className='mr-sm-2 m1-sm-5 p-2 m-12'
         >
 
