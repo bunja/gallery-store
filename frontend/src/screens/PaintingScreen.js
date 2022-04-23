@@ -6,20 +6,22 @@ import { listPaintingDetails } from '../actions/paintingActions'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import { addToCart, removeFromCart } from '../actions/cartActions'
+import { alignPropType } from 'react-bootstrap/esm/types'
 
 function PaintingScreen() {
     const { id } = useParams()
-    
+    console.log("id", id)
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const paintingDetails = useSelector(state => state.paintingDetails)
+    const { error, loading, painting } = paintingDetails
     const cart = useSelector(state => state.cart)
     const { cartItems } = cart
-    const { error, loading, painting } = paintingDetails
+    
 
     let isInCart = false; 
     console.log('cartItems', cartItems)
-    console.log('cartItems ===>', cartItems.find(y => y.painting === parseInt(id)))
+    console.log('painting ====>', painting)
 
     if (cartItems && cartItems.find(y => y.painting === parseInt(id))) {
         isInCart = true;
@@ -27,6 +29,7 @@ function PaintingScreen() {
     }
 
     useEffect(() => {
+        console.log('Use effect', id)
         dispatch(listPaintingDetails(id))
         
     }, [dispatch, id])
@@ -38,10 +41,9 @@ function PaintingScreen() {
         navigate(`/cart`)
     }
 
-   
-
-    
-    
+    if (painting.length == 0) {
+        return <Loader/>
+    }
 
     return (
         <div>
@@ -53,7 +55,10 @@ function PaintingScreen() {
                     : (
                         <Row>
                             <Col md={6}>
-                                <Image src={painting.image} alt={painting.name} fluid />
+                                {painting && painting.images.map(image =>
+                                    <Image src={image.imageUrl} alt={image.name} fluid />
+                                )}
+                                
                             </Col>
 
                             <Col md={3}>

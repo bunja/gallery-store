@@ -67,7 +67,7 @@ export const paintingDetailsReducer = (state = { painting: [] }, action) => {
             }
 
         case PAINTING_DETAILS_SUCCESS:
-            // console.log("PAINTING_DETAILS_Success", action.payload)
+            console.log("PAINTING_DETAILS_Success", action.payload)
             return {
                 loading: false,
                 painting: action.payload

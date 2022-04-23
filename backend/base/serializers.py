@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
-from .models import Painting, ShippingAddress, OrderItem, Order
+from .models import Painting, ShippingAddress, OrderItem, Order, Image
 
 class UserSerializer(serializers.ModelSerializer):
     name = serializers.SerializerMethodField(read_only=True)
@@ -33,13 +33,25 @@ class UserSerializerWithToken(UserSerializer):
     def get_token(self, obj):
         token = RefreshToken.for_user(obj)
         return str(token.access_token)
-        
+
+class ImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Image
+        fields = '__all__'        
         
 
 class PaintingSerializer(serializers.ModelSerializer):
+    images = serializers.SerializerMethodField(read_only=True)
+    
     class Meta:
         model = Painting
         fields = '__all__'
+    
+    def get_images(self, obj):
+        images = obj.image_set.all()
+        serializer = ImageSerializer(images, many=True)
+        return serializer.data
+    
         
 class ShippingAddressSerializer(serializers.ModelSerializer):
     class Meta:

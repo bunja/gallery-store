@@ -8,7 +8,7 @@ class Painting(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=200, null=True, blank=True)
-    image = models.ImageField(null=True, blank=True, default='/placeholder.png')
+    # image = models.ImageField(null=True, blank=True, default='/placeholder.png')
     description = models.TextField(null=True, blank=True)
     materials = models.CharField(max_length=200, null=True, blank=True)
     
@@ -23,6 +23,18 @@ class Painting(models.Model):
     def __str__(self):
         return self.name
 
+class Image(models.Model):
+    paintingId = models.ForeignKey(Painting, on_delete=models.SET_NULL, null=True)
+    imageUrl = models.ImageField(null=True, blank=True, default='/placeholder.png')
+    name = models.TextField(null=True, blank=True)
+    order = models.IntegerField(null=False, blank=False, default=1)
+    _id = models.AutoField(primary_key=True, editable=False)
+
+    def __str__(self):
+        return str(self.name)
+    
+    class Meta:
+        ordering = [ 'order' ]
 
 
 class Order(models.Model):
