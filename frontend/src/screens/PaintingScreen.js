@@ -10,6 +10,7 @@ import { alignPropType } from 'react-bootstrap/esm/types'
 
 function PaintingScreen() {
     const { id } = useParams()
+    const intId = parseInt(id)
     console.log("id", id)
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -18,12 +19,12 @@ function PaintingScreen() {
     const cart = useSelector(state => state.cart)
     const { cartItems } = cart
 
-    const [ mainImage, setMainImage ] = useState('')
+    const [ mainImage, setMainImage ] = useState({paintingId: -1})
     
 
     let isInCart = false; 
-    console.log('cartItems', cartItems)
     console.log('painting ====>', painting)
+    // const paintingId = painting.images[0].paintingId
 
     if (cartItems && cartItems.find(y => y.painting === parseInt(id))) {
         isInCart = true;
@@ -33,9 +34,17 @@ function PaintingScreen() {
     useEffect(() => {
         console.log('Use effect', id)
         dispatch(listPaintingDetails(id))
-        
     }, [dispatch, id])
    
+    // useEffect(() => {
+    // console.log("mainImage", mainImage)
+    //     if (mainImage.painting != intId) {
+    //         if (painting.images) {
+    //             setMainImage(painting.images[0])
+    //         }
+    //     }
+    // })
+
     const addToCartHandler = () => {
         console.log('addToCartHandler triggered', id)
         dispatch(addToCart(id))
@@ -47,13 +56,15 @@ function PaintingScreen() {
         return <Loader/>
     }
 
-    if (mainImage == '') {
-        setMainImage(painting.images[0].imageUrl)
+    const changeMainImage = (image) => {
+        console.log("LOOOOOL", image)
+        setMainImage(image)
     }
 
-    const changeMainImage = (imageUrl) => {
-        console.log("LOOOOOL")
-        setMainImage(imageUrl)
+    if (mainImage.paintingId == -1) {
+        if (painting.images[0].paintingId == intId) {
+            changeMainImage(painting.images[0])
+        }
     }
 
     return (
@@ -66,16 +77,16 @@ function PaintingScreen() {
                     : (
                         <Row>
                             <Col md={6}>
-                                <div class="images-main">
-                                    <Image src={mainImage} alt={painting.images[0].name} fluid />
+                                <div className="images-main">
+                                    <Image src={mainImage.imageUrl} alt={mainImage.name} fluid />
                                 </div>
-                                <div class="images-gallery">
+                                <div className="images-gallery">
                                     {painting && painting.images.map(image =>    
                                         <Image
                                             key={image._id}
                                             src={image.imageUrl} 
                                             alt={image.name} fluid
-                                            onClick={e => changeMainImage(image.imageUrl)}
+                                            onClick={e => changeMainImage(image)}
                                         />
                                     )}
                                 </div>
