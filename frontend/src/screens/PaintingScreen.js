@@ -55,8 +55,18 @@ function PaintingScreen() {
                     : (
                         <Row>
                             <Col md={6}>
+                            <Image src={painting.images[0].imageUrl} alt={painting.images[0].name} fluid />
                                 {painting && painting.images.map(image =>
-                                    <Image src={image.imageUrl} alt={image.name} fluid />
+                                 
+                                    <Col md={3} key={image._id}> 
+                                    <Image 
+                                        src={image.imageUrl} 
+                                        alt={image.name} fluid 
+                                        />
+                                        
+                                    </Col>
+                                    
+                                  
                                 )}
                                 
                             </Col>

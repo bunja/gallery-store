@@ -43,13 +43,14 @@ def addOrderItems(request):
         
         for i in orderItems:
             painting = Painting.objects.get(_id=i['painting'])
-            
+            images = painting.image_set.all()
+            print('Image', images)
             item = OrderItem.objects.create(
                 painting=painting,
                 order=order,
                 name=painting.name,
                 price=i['price'],
-                image=painting.image.url
+                image=images[0].imageUrl
             )
             # update stock
             painting.isAvailable = False

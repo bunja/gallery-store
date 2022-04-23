@@ -7,7 +7,7 @@ function Painting({ painting }) {
     return (
         <Card className="my-3 p-3 rounded">
             <Link to={`/painting/${painting._id}`}>
-                <Card.Img src={painting.image} />
+                <Card.Img src={painting.images[0].imageUrl} />
             </Link>
 
             <Card.Body>
@@ -30,7 +30,7 @@ function Painting({ painting }) {
                 </Card.Text>
 
 
-                <Card.Text as="h3">
+                <Card.Text as="h4">
                     ${painting.price}
                 </Card.Text>
             </Card.Body>

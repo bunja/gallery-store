@@ -16,7 +16,7 @@ export const addToCart = (id) => async(dispatch, getState) => {
         payload: {
             painting: data._id,
             name: data.name,
-            image: data.image,
+            images: data.images[0].imageUrl,
             price: data.price,
 
         }

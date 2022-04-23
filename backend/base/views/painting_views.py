@@ -44,9 +44,9 @@ def getPaintings(request):
 def getPainting(request, pk):
     painting = Painting.objects.get(_id=pk)
     images = painting.image_set.all()
-    print("images", images)
+    # print("images", images)
     serializer = PaintingSerializer(painting, many=False)
-    print(serializer.data)
+    # print(serializer.data)
     return Response(serializer.data)
 
 @api_view(['POST'])

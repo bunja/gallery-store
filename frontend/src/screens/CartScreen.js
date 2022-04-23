@@ -13,7 +13,7 @@ function CartScreen() {
     const dispatch = useDispatch()
     const cart = useSelector(state => state.cart)
     const { cartItems } = cart
-    // console.log('cartiyems', cartItems)
+    console.log('cartiyems', cartItems)
     const navigate = useNavigate()
 
     // useEffect(() => {
@@ -45,7 +45,7 @@ function CartScreen() {
                             <ListGroup.Item key={item.painting}>
                                 <Row>
                                     <Col md={2}>
-                                        <Image src={item.image} alt={item.name} fluid rounded />
+                                        <Image src={item.images} alt={item.images} fluid rounded />
                                     </Col>
                                     <Col md={3}>
                                         <Link to={`/painting/${item.painting}`}>{item.name}</Link>
