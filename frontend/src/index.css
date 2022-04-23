@@ -42,3 +42,24 @@ main {
   }
 }
 
+.images-main {
+  height: 300px;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.images-gallery {
+  display: flex;
+  height: 75px;
+
+}
+
+.images-gallery img {
+  margin-right: 5px;
+  border: 1px red solid;
+}
+
+
+#basic-navbar-nav {
+  justify-content: space-between;
+}

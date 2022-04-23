@@ -30,7 +30,7 @@ function Header() {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <SearchBox className='px-3'/>
                         <Nav className="mr-auto">
-                            <Navbar.Text>Galery Store</Navbar.Text>
+                            <Navbar.Text className="mx-2">Galery Store</Navbar.Text>
                             <LinkContainer to="/cart">
                                 <Nav.Link>
                                     <i className="fas fa-shopping-cart"></i>Cart

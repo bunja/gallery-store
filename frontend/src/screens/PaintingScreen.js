@@ -17,6 +17,8 @@ function PaintingScreen() {
     const { error, loading, painting } = paintingDetails
     const cart = useSelector(state => state.cart)
     const { cartItems } = cart
+
+    const [ mainImage, setMainImage ] = useState('')
     
 
     let isInCart = false; 
@@ -45,6 +47,15 @@ function PaintingScreen() {
         return <Loader/>
     }
 
+    if (mainImage == '') {
+        setMainImage(painting.images[0].imageUrl)
+    }
+
+    const changeMainImage = (imageUrl) => {
+        console.log("LOOOOOL")
+        setMainImage(imageUrl)
+    }
+
     return (
         <div>
             <Link to='/'>Go Back</Link>
@@ -55,20 +66,19 @@ function PaintingScreen() {
                     : (
                         <Row>
                             <Col md={6}>
-                            <Image src={painting.images[0].imageUrl} alt={painting.images[0].name} fluid />
-                                {painting && painting.images.map(image =>
-                                 
-                                    <Col md={3} key={image._id}> 
-                                    <Image 
-                                        src={image.imageUrl} 
-                                        alt={image.name} fluid 
+                                <div class="images-main">
+                                    <Image src={mainImage} alt={painting.images[0].name} fluid />
+                                </div>
+                                <div class="images-gallery">
+                                    {painting && painting.images.map(image =>    
+                                        <Image
+                                            key={image._id}
+                                            src={image.imageUrl} 
+                                            alt={image.name} fluid
+                                            onClick={e => changeMainImage(image.imageUrl)}
                                         />
-                                        
-                                    </Col>
-                                    
-                                  
-                                )}
-                                
+                                    )}
+                                </div>
                             </Col>
 
                             <Col md={3}>
