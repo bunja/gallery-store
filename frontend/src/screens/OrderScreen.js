@@ -18,6 +18,7 @@ function OrderScreen() {
 
     const orderDetails = useSelector(state => state.orderDetails)
     const { order, error, loading } = orderDetails
+    console.log("OrderScreen ===> order", order)
    
     const orderPay = useSelector(state => state.orderPay)
     const { loading: loadingPay, success: successPay } = orderPay
@@ -127,7 +128,7 @@ function OrderScreen() {
                                                 <Row>
 
                                                     <Col md={1}>
-                                                        <Image src={item.image} alt={item.name} fluid rounded />
+                                                        <Image src={`/images/${item.image}`} alt={item.name} fluid rounded />
                                                     </Col>
 
                                                     <Col>

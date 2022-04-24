@@ -17,8 +17,8 @@ function PlaceOrderScreen() {
     const { order, error, success } = orderCreate
     const cart = useSelector(state => state.cart)
     const { shippingAddress } = cart
-    console.log('PLACE ORDER SCREEN order====>', order)
-    console.log('PLACE ORDER SCREEN orderCreate====>', orderCreate)
+    // console.log('PLACE ORDER SCREEN order====>', order)
+    console.log('PLACE ORDER SCREEN cart img url', cart.cartItems[0].images)
 
     cart.itemsPrice = cart.cartItems.reduce((acc, item) => acc + Number(item.price), 0).toFixed(2)
     
@@ -32,7 +32,7 @@ function PlaceOrderScreen() {
     }
 
     useEffect(() => {
-        console.log("my order id WHERE THE FUCK IT???", order._id)
+        // console.log("my order id WHERE THE FUCK IT???", order._id)
         if (success) {
             navigate(`/order/${order._id}`)
             dispatch({ type: ORDER_CREATE_RESET})
@@ -90,7 +90,7 @@ return (
                                             <Row>
 
                                                 <Col md={1}>
-                                                    <Image src={item.image} alt={item.name} fluid rounded />
+                                                    <Image src={item.images} alt={item.name} fluid rounded />
                                                 </Col>
 
                                                 <Col>

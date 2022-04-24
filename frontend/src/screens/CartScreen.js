@@ -6,14 +6,14 @@ import Message from '../components/Message'
 import { addToCart, removeFromCart } from '../actions/cartActions'
 
 function CartScreen() {
-    // console.log('cart')
+    console.log('cart')
     const { id } = useParams()
-    // console.log('cart item id', id)
+    console.log('cartScreen id', id)
     const location = useLocation()
     const dispatch = useDispatch()
     const cart = useSelector(state => state.cart)
     const { cartItems } = cart
-    console.log('cartiyems', cartItems)
+    console.log('2 cartItems', cartItems)
     const navigate = useNavigate()
 
     // useEffect(() => {

@@ -5,48 +5,44 @@ import { useDispatch, useSelector } from 'react-redux'
 import { listPaintingDetails } from '../actions/paintingActions'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
-import { addToCart, removeFromCart } from '../actions/cartActions'
-import { alignPropType } from 'react-bootstrap/esm/types'
+import { addToCart } from '../actions/cartActions'
+
 
 function PaintingScreen() {
     const { id } = useParams()
     const intId = parseInt(id)
-    console.log("id", id)
+    // console.log("id", id)
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const paintingDetails = useSelector(state => state.paintingDetails)
     const { error, loading, painting } = paintingDetails
+
+    console.log('1 painting', painting)
+
     const cart = useSelector(state => state.cart)
     const { cartItems } = cart
+
+    console.log('1 cart ', cart)
 
     const [ mainImage, setMainImage ] = useState({paintingId: -1})
     
 
     let isInCart = false; 
-    console.log('painting ====>', painting)
-    // const paintingId = painting.images[0].paintingId
-
+    
     if (cartItems && cartItems.find(y => y.painting === parseInt(id))) {
         isInCart = true;
-        console.log("FUUUUCK")
+        
     }
 
     useEffect(() => {
-        console.log('Use effect', id)
+        // console.log('Use effect', id)
         dispatch(listPaintingDetails(id))
     }, [dispatch, id])
    
-    // useEffect(() => {
-    // console.log("mainImage", mainImage)
-    //     if (mainImage.painting != intId) {
-    //         if (painting.images) {
-    //             setMainImage(painting.images[0])
-    //         }
-    //     }
-    // })
+   
 
     const addToCartHandler = () => {
-        console.log('addToCartHandler triggered', id)
+        // console.log('addToCartHandler triggered', id)
         dispatch(addToCart(id))
        
         navigate(`/cart`)
@@ -57,7 +53,7 @@ function PaintingScreen() {
     }
 
     const changeMainImage = (image) => {
-        console.log("LOOOOOL", image)
+        // console.log("LOOOOOL", image)
         setMainImage(image)
     }
 

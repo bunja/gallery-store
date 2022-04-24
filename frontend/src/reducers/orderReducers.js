@@ -125,7 +125,7 @@ export const orderPayReducer = (state = {}, action) => {
 }
 
 export const orderListMyReducer = (state = {}, action) => {
-    console.log("Hi, i am oerderListMyReducer")
+    // console.log("Hi, i am oerderListMyReducer")
     switch (action.type) {
         
         case ORDER_LIST_MY_REQUEST:

@@ -44,7 +44,12 @@ def addOrderItems(request):
         for i in orderItems:
             painting = Painting.objects.get(_id=i['painting'])
             images = painting.image_set.all()
-            print('Image', images)
+            # for img in images:
+            #     print('')
+            #     print('<===Image ===>', img.imageUrl)
+            #     print('')
+            # print('^^^^Main Image====>',images[0] )
+            # print('')
             item = OrderItem.objects.create(
                 painting=painting,
                 order=order,

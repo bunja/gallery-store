@@ -43,8 +43,8 @@ main {
 }
 
 .images-main {
-  height: 300px;
-  display: flex;
+  /* height: 300px;
+  display: flex; */
   margin-bottom: 10px;
 }
 
