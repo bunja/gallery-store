@@ -99,10 +99,28 @@ def deletePainting(request, pk):
 @api_view(['POST'])
 def uploadImage(request):
     data = request.data
-    
+    print('LOOOOOOOOOOOOOOOOOOOL')
+    print(data)
     painting_id = data['painting_id']
     painting = Painting.objects.get(_id=painting_id)
+
+    painting.image_set.all().delete()
     
-    painting.image = request.FILES.get('image')
+    request_images = request.FILES.getlist('image')
+    result_images = []
+    n = 1
+    for image_data in request_images:
+        
+        image = Image.objects.create(
+            paintingId = painting,
+            name = 'img' + str(n),
+            order = n,
+            imageUrl = image_data,
+        )
+        image.save()
+        n = n + 1
+        result_images.append(image)
+    painting.images = result_images
+    print(painting.images)
     painting.save()
-    return Response('Image was uploaded')
+    return Response('Images was uploaded')

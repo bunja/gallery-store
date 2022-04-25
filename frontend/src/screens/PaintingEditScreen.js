@@ -79,10 +79,13 @@ function PaintingEditScreen() {
 
     const uploadFileHandler = async (e) => {
         console.log('file is being uploaded')
-        const file = e.target.files[0]
+        const files = e.target.files
         const formData = new FormData()
 
-        formData.append('image', file)
+        for (let i = 0; i < files.length; i++) {
+            formData.append('image', files[i])
+        }
+
         formData.append('painting_id', id)
 
         setUploading(true)
@@ -144,7 +147,6 @@ function PaintingEditScreen() {
                             <Form.Group controlId='image'>
                                 <Form.Label>Image</Form.Label>
                                 <Form.Control
-
                                     type='text'
                                     placeholder='Enter image'
                                     value={image}
@@ -157,12 +159,13 @@ function PaintingEditScreen() {
                                     type='file'
                                     label='Choose File'
                                     custom
+                                    multiple
                                     onChange={uploadFileHandler}
                                 >
 
                                 </Form.Control>
                                 {/* {uploading && <Loader/>} */}
-                               
+                            Want to upload another one   
 
                             </Form.Group>
 
