@@ -25,7 +25,7 @@ function Header() {
         <header>
             <Navbar bg="light" variant="light" expand="lg"  collapseOnSelect>
                 <Container className='px-5'>
-                    <LinkContainer to="/">
+                    <LinkContainer to="/aboutme">
                         <Navbar.Brand>La Kookoo </Navbar.Brand>
 
                     </LinkContainer>
@@ -34,10 +34,10 @@ function Header() {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <SearchBox className='px-3'/>
                         <Nav className="mr-auto">
-                            <Navbar.Text className="mx-2">Galery Store</Navbar.Text>
-                            <LinkContainer to="/aboutme">
+                            <Navbar.Text className="mx-2"></Navbar.Text>
+                            <LinkContainer to="/">
                                 <Nav.Link>
-                                    About
+                                    Galery Store
                                 </Nav.Link>
                             </LinkContainer>
                             <LinkContainer to="/cart">
