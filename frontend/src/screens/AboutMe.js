@@ -20,17 +20,17 @@ function AboutMe() {
                     <Image src={resume.image} className='my-image'/>
                 </ListGroup.Item>
                 <ListGroup.Item>
-                    <p>Email:{resume.email}</p>
+                    <p>Email: {resume.email}</p>
                 </ListGroup.Item>
 
                 <ListGroup.Item>
-                   <p>City:{resume.city}</p> 
+                   <p>City: {resume.city}</p> 
                 </ListGroup.Item>
 
                 <ListGroup.Item>
-                    Languages:
+                    Languages
                     {Object.entries(resume.languages).map(([key, value]) => (
-                        <div key={key}>{key} : {value}</div>
+                        <div key={key}>{key}: {value}</div>
                     )
                         
                     )}
@@ -49,36 +49,38 @@ function AboutMe() {
                 </ListGroup.Item>
                 <ListGroup.Item>
                     <div>
-                        <h3>Projects:</h3>
+                        <h3>Projects</h3>
                        <p>
-                       Dis web site:&nbsp; 
-                        {resume['tech-stack'].frontend}
-                        {resume['tech-stack'].backend}</p> 
+                       I did dis web site:&nbsp; 
+                        I did it with hope, React.js, Redux and Django.</p> 
 
-                       <p>Another web site:&nbsp; 
-                        {resume['tech-stack']['backend']}</p> 
+                       <p><a href="https://github.com/DataTalksClub/website-django" target="_blank">Another web site</a> written by me will be ready somehow in the foreseeable future.&nbsp; 
+                        </p> 
 
-                        <p>Also somehow in the past i did kita finder
-                        and something else and more over I hate myself for just being stupid me</p>
+                        <p>Also somehow in the past I did write glorious <a href="https://github.com/bunja/kita-finder" target="_blank">Kitafinder</a>
+                        and something else while I was doing SPICED. <br/>
+                        I heard something about {resume.tech.backend}.&nbsp;{resume.tech.frontend}.<br/>
+                        I defenetly can do some CSS, but prefer not to.
+                        </p>
                     </div>
 
                 </ListGroup.Item>
                 <ListGroup.Item>
-                    <h3>Expirience:</h3>
+                    <h3>Expirience</h3>
                     <p>
                         {resume.expirience.job}
                     </p>
                 </ListGroup.Item>
                 <ListGroup.Item>
-                    <h3>Education:</h3>
+                    <h3>Education</h3>
                     <div>
                     {Object.entries(resume.education).map(([ke, value]) => (
-                        <div key={ke}>{ke} : {value}</div>
+                        <div key={ke}>{ke}: {value}</div>
                     ) )}
                     </div>
                 </ListGroup.Item>
                 <ListGroup.Item>
-                   <h3>About me:</h3> 
+                   <h3>About me</h3> 
                     <div>{resume.about.description}</div>
                 </ListGroup.Item>
             </ListGroup>

@@ -5,6 +5,7 @@ main {
 .search-box input{
     display: inline!important; 
     width: auto!important;
+    margin-right: 10px;
 }
 
 /* carousel */

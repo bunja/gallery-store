@@ -1,25 +1,25 @@
 const resume = {
     'name': 'Larisa Kosareva',
     'image': '/images/resume.jpg',
-    'email': 'kosareva.laris',
+    'email': 'kosareva.larisa@gmail.com',
     'city': 'Berlin',
     'languages': {
         'Russian': 'mother tongue',
         'English': 'fluent',
-        'German': 'hui znaet',
+        'German': 'not sure',
         'French': 'basic level',
     },
-    'tech-stack': {
-        'frontend ': 'I hate css',
+    'tech': {
+        'frontend': 'I hate CSS',
         'backend': 'node.js, express, django'
     },
     'education': {
-        'spiced': 'Sertanly can write something',
-        'university': 'It was too long ago.I do not even remember what I did there',
+        'Spiced': 'Sertanly can write something',
+        'University': 'It was too long ago. I do not even remember what I did there',
         
     },
     'projects': {
-        'django': 'I tried, but I am a failure'
+        'django': 'I tried, and will try again'
     },
     'about': {
         'description': 'I am a free painter and alcoholic. For now I do not drink and do not paint.'
