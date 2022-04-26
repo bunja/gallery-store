@@ -66,7 +66,7 @@ function PaintingEditScreen() {
             _id: painting._id, 
             name, 
             price, 
-            image,
+            // images,
             height,
             width,
             year, 
@@ -165,7 +165,7 @@ function PaintingEditScreen() {
 
                                 </Form.Control>
                                 {/* {uploading && <Loader/>} */}
-                            Want to upload another one   
+                             
 
                             </Form.Group>
 

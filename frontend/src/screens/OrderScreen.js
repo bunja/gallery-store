@@ -132,7 +132,7 @@ function OrderScreen() {
                                                     </Col>
 
                                                     <Col>
-                                                        <Link to={`/product/${item.product}`}>{item.name}</Link>
+                                                        <Link to={`/painting/${item.painting}`}>{item.name}</Link>
                                                     </Col>
 
                                                     <Col md={4}>

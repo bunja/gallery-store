@@ -112,7 +112,9 @@ def deleteUser(request, pk):
     return Response('user was deleted')
 
 
-
+# @api_view(['GET'])
+# def aboutMe(request):
+    
 
 
 

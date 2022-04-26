@@ -17,6 +17,7 @@ import UserEditScreen from './screens/UserEditScreen';
 import PaintingListScreen from './screens/PaintingListScreen';
 import PaintingEditScreen from './screens/PaintingEditScreen';
 import OrderListScreen from './screens/OrderListScreen';
+import AboutMe from './screens/AboutMe';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Container>
           <Routes>
             <Route path="/" element={<HomeScreen/>} exact />
+            <Route path="/aboutme" element={<AboutMe/>} exact />
             <Route path="/painting/:id" element={<PaintingScreen/>} />
             <Route path="/cart" element={<CartScreen/>} />
             <Route path="/login" element={<LoginScreen/>}/>

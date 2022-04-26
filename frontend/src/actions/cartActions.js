@@ -4,6 +4,8 @@ import {
     CART_REMOVE_ITEM, 
     CART_SAVE_SHIPPING_ADDRESS,
 
+    CART_CLEAR_SHIPPING_ADDRESS,
+
     CART_SAVE_PAYMENT_METHOD,
 } from '../constants/cartConstants'
 
@@ -44,6 +46,17 @@ export const saveShippingAddress = (data) => (dispatch) => {
     })
 
     localStorage.setItem('shippingAddress', JSON.stringify(data))
+    
+}
+
+export const clearShippingAddress = () => (dispatch) => {
+    // console.log(" save shiping data!!!")
+    dispatch({
+        type: CART_CLEAR_SHIPPING_ADDRESS,
+        
+    })
+
+    localStorage.removeItem('shippingAddress', JSON.stringify())
     
 }
 

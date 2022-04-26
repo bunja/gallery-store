@@ -35,6 +35,11 @@ function Header() {
                         <SearchBox className='px-3'/>
                         <Nav className="mr-auto">
                             <Navbar.Text className="mx-2">Galery Store</Navbar.Text>
+                            <LinkContainer to="/aboutme">
+                                <Nav.Link>
+                                    About
+                                </Nav.Link>
+                            </LinkContainer>
                             <LinkContainer to="/cart">
                                 <Nav.Link>
                                     <i className="fas fa-shopping-cart"></i>Cart

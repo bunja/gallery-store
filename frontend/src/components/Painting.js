@@ -31,7 +31,7 @@ function Painting({ painting }) {
 
 
                 <Card.Text as="h4">
-                    ${painting.price}
+                €{painting.price}
                 </Card.Text>
             </Card.Body>
         </Card>

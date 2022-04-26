@@ -99,7 +99,7 @@ function PaintingListScreen() {
                                     <tr key={painting._id}>
                                         <td>{painting._id}</td>
                                         <td>{painting.name}</td>
-                                        <td>{painting.price}</td>
+                                        <td>€{painting.price}</td>
                                         <td>{painting.width} x {painting.height} cm</td>
                                         <td>{painting.materials}</td>
                                         <td>{painting.year}</td>

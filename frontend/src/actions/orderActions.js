@@ -184,7 +184,7 @@ export const listMyOrders = () => async (dispatch, getState) => {
             `/api/orders/myorders/`,
             config
         )
-
+        console.log('list my orders, DATA', data)
         
         dispatch({
             type: ORDER_LIST_MY_SUCCESS,

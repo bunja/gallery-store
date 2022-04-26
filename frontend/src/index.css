@@ -48,6 +48,13 @@ main {
   margin-bottom: 10px;
 }
 
+.my-image {
+  height: 300px;
+  /* display: flex; */
+  margin-bottom: 10px;
+}
+
+
 .images-gallery {
   display: flex;
   height: 75px;

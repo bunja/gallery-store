@@ -73,7 +73,7 @@ function PaintingScreen() {
                     : (
                         <Row>
                             <Col md={6}>
-                                <div className="images-main">
+                            <div className="images-main">
                                     <Image src={mainImage.imageUrl} alt={mainImage.name} fluid />
                                 </div>
                                 <div className="images-gallery">
@@ -89,7 +89,7 @@ function PaintingScreen() {
                             </Col>
 
                             <Col md={3}>
-                                <ListGroup variant='flush'>
+                            <ListGroup variant='flush'>
                                     <ListGroup.Item>
                                         <h3>{painting.name}</h3>
                                     </ListGroup.Item>
@@ -97,11 +97,11 @@ function PaintingScreen() {
 
 
                                     <ListGroup.Item>
-                                        Price:{painting.price}
+                                        Price:  €{painting.price}
                                     </ListGroup.Item>
 
                                     <ListGroup.Item>
-                                        Description:{painting.description}
+                                        Description: {painting.description}
                                     </ListGroup.Item>
                                 </ListGroup>
                             </Col>
@@ -111,7 +111,7 @@ function PaintingScreen() {
                                         <ListGroup.Item>
                                             <Row>
                                                 <Col>Price:</Col>
-                                                <Col><strong>${painting.price}</strong></Col>
+                                                <Col><strong>€{painting.price}</strong></Col>
                                             </Row>
                                         </ListGroup.Item>
                                         <ListGroup.Item>

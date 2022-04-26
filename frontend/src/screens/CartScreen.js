@@ -79,7 +79,7 @@ function CartScreen() {
                             Subtotal (
                             {cartItems.length})  items
                         </h2>
-                        ${cartItems.reduce((acc, item) => acc + Number(item.price), 0)}     
+                        €{cartItems.reduce((acc, item) => acc + Number(item.price), 0)}     
                     </ListGroup.Item>
                     <ListGroup.Item>
                         <Button

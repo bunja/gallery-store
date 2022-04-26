@@ -39,7 +39,7 @@ import {
 } from '../constants/userConstants'
 
 import { ORDER_LIST_MY_RESET } from '../constants/orderConstants'
-import { CART_CLEAR_ITEMS } from '../constants/cartConstants'
+import { CART_CLEAR_ITEMS, CART_CLEAR_SHIPPING_ADDRESS } from '../constants/cartConstants'
 
 export const login = (email, password) => async (dispatch) => {
     try {
@@ -80,12 +80,13 @@ export const login = (email, password) => async (dispatch) => {
 
 export const logout = () => (dispatch) => {
     localStorage.removeItem("userInfo")
-    localStorage.removeItem("cartItems")
+    
     dispatch({ type: USER_LOGOUT })
     dispatch({ type: USER_DETAILS_RESET})
     dispatch({ type: ORDER_LIST_MY_RESET})
     dispatch({ type: USER_LIST_RESET})
     dispatch({ type: CART_CLEAR_ITEMS})
+    dispatch({ type: CART_CLEAR_SHIPPING_ADDRESS})
 
 }
 
