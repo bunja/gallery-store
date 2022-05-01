@@ -5,6 +5,7 @@
 
 /static/images
 .envrc
+.ebextensions/options.config
 *.sqlite3
 
 # User-specific files
@@ -373,3 +374,8 @@ ENV/
 env.bak/
 venv.bak/
 
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
