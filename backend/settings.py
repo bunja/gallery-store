@@ -180,9 +180,11 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/images/'
 
+print("BASE_DIR", BASE_DIR)
+
 STATICFILES_DIRS = [
-    BASE_DIR/ 'static',
-    BASE_DIR/ 'frontend/build/static'
+    BASE_DIR / 'static',
+    BASE_DIR / 'frontend/build/static'
 ]
 
 MEDIA_ROOT = BASE_DIR / 'static/images'
