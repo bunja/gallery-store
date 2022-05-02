@@ -17,7 +17,7 @@ function AboutMe() {
         <Col md={4}>
             <ListGroup variant='flush'>
                 <ListGroup.Item>
-                    <Image src={resume.image} className='my-image'/>
+                    <Image src='https://lakookoo-bucket.s3.eu-west-1.amazonaws.com/resume.jpg' className='my-image'/>
                 </ListGroup.Item>
                 <ListGroup.Item>
                     <p>Email: {resume.email}</p>
@@ -57,9 +57,9 @@ function AboutMe() {
                        <p><a href="https://github.com/DataTalksClub/website-django" target="_blank">Another web site</a> written by me will be ready somehow in the foreseeable future.&nbsp; 
                         </p> 
 
-                        <p>Also somehow in the past I did write glorious <a href="https://github.com/bunja/kita-finder" target="_blank">Kitafinder</a>
+                        <p>Also somehow in the past I did write glorious <a href="https://github.com/bunja/kita-finder" target="_blank">Kitafinder </a>
                         and something else while I was doing SPICED. <br/>
-                        I heard something about {resume.tech.backend}.&nbsp;{resume.tech.frontend}.<br/>
+                        I heard about {resume.tech.backend}.&nbsp;{resume.tech.frontend}.<br/>
                         I defenetly can do some CSS, but prefer not to.
                         </p>
                     </div>
