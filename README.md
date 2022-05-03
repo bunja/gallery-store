@@ -88,9 +88,24 @@ Now open localhost:5000
 
 
 
-
-
-
-
 ## Deploying to Heroku
 
+Create an app on Heroku.
+
+Install heroku cli
+
+```bash
+heroku login
+```
+
+In heroku settings you need to add variables from `.envrc` to Config Vars.
+
+Change local database to some remote database. For examle using RDS from AWS.
+
+In buildpacks you need to add first Node.js, and than Python (in that order).
+
+Now you ready to depoy:
+
+```bash
+git push heroku master
+```
