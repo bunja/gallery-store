@@ -1,13 +1,13 @@
 # Gallery Store
 
 I created this project as a part of my portfolio.
-
+<img src='./images/screenshot.png'>
 It is a gallery where you can see my art and buy it.
 I used Django for backend, and React, Redux and Bootstrap for frontend.
 
 To buy something, you need to register there.
 
-There's also a paypal buttons, but I do not recommend to use them.
+There's also paypal buttons, but I do not recommend to use them.
 They're connected to some sandbox account and I have no idea what happens
 if you try to pay.
 
