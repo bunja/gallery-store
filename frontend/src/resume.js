@@ -14,7 +14,7 @@ const resume = {
         'backend': 'node.js, express, django'
     },
     'education': {
-        'Spiced': 'Sertanly can write something',
+        'Spiced': 'Certanly can write something',
         'University': 'It was too long ago. I do not even remember what I did there',
         
     },

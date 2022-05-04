@@ -67,7 +67,7 @@ function AboutMe() {
 
                 </ListGroup.Item>
                 <ListGroup.Item>
-                    <h3>Expirience</h3>
+                    <h3>Experience</h3>
                     <p>
                         {resume.expirience.job}
                     </p>
