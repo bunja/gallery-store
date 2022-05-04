@@ -1,7 +1,10 @@
 # Gallery Store
 
-I created this project as a part of my portfolio.
+
 <img src='./images/screenshot.png'>
+
+
+I created this project as a part of my portfolio.
 It is a gallery where you can see my art and buy it.
 I used Django for backend, and React, Redux and Bootstrap for frontend.
 
